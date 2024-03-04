@@ -21,7 +21,7 @@ public class LadderGenerator {
         this.bridgeGenerator = bridgeGenerator;
     }
 
-    public List<Floor> generateLadder() {
+    public List<Floor> generate() {
         List<Floor> floors = new ArrayList<>();
         int bridgeCount = calculateBridgeCount(playerNames);
         for (int i = 0; i < ladderHeight.getValue(); i++) {

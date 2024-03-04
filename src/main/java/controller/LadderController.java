@@ -1,7 +1,7 @@
 package controller;
 
 import common.Command;
-import domain.ladder.Floor;
+import domain.ladder.Ladder;
 import domain.ladder.LadderGenerator;
 import domain.ladder.LadderClimbingGame;
 import domain.ladder.LadderHeight;
@@ -29,10 +29,10 @@ public class LadderController {
 
     public void start() {
         PlayerNames playerNames = readPlayerNames();
+        LadderResults ladderResults = readLadderResultCountOf(playerNames.getPlayerCount());
         LadderHeight ladderHeight = readLadderHeight();
         LadderGenerator ladderGenerator = new LadderGenerator(ladderHeight, playerNames, new RandomBridgeGenerator());
-        List<Floor> ladder = ladderGenerator.generateLadder();
-        LadderResults ladderResults = readLadderResultCountOf(playerNames.getPlayerCount());
+        Ladder ladder = new Ladder(ladderGenerator.generate());
         outputView.printInputtedResultsOf(playerNames, ladder, ladderResults);
         LadderClimbingGame ladderClimbingGame = new LadderClimbingGame(playerNames, ladder, ladderResults);
         ClimbingResults climbingResults = ladderClimbingGame.createClimbingResults();

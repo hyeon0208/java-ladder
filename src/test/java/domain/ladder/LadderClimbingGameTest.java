@@ -37,7 +37,7 @@ class LadderClimbingGameTest {
         LadderGenerator ladderGenerator = new LadderGenerator(ladderHeight, playerNames, bridgeGeneratorStub);
         List<LadderResult> results = List.of(ladderResult1, ladderResult2, ladderResult3);
         LadderResults ladderResults = LadderResults.createMatchesCountOf(playerNames.getPlayerCount(), results);
-        List<Floor> ladder = ladderGenerator.generateLadder();
+        Ladder ladder = new Ladder(ladderGenerator.generate());
         LadderClimbingGame ladderClimbingGame = new LadderClimbingGame(playerNames, ladder, ladderResults);
         ClimbingResults climbingResults = ladderClimbingGame.createClimbingResults();
 
